@@ -116,6 +116,7 @@ def extract_surface_water_area_per_frame(dam_id, dam_poly, dam_bbox, date, resx,
     Run water detection algorithm for a single timestamp.
     """
     measurement = get_new_measurement_entry(dam_id, date, WaterDetectionSensor.S2_NDWI, S2_WATER_DETECTOR_VERSION)
+    print(measurement)
     # initialise requests
     try:
         wcs_ndwi_request = WcsRequest(layer='NDWI', bbox=dam_bbox, time=date.strftime('%Y-%m-%d'), maxcc=S2_MAX_CC,
