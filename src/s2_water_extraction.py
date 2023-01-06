@@ -122,7 +122,7 @@ def extract_surface_water_area_per_frame(dam_id, dam_poly, dam_bbox, date, resx,
                                       resx=f'{resx}m', resy=f'{resy}m', image_format=MimeType.TIFF, 
                                       time_difference=timedelta(hours=2),
                                       custom_url_params={CustomUrlParam.SHOWLOGO: False,
-                                                         }, data_collection = DataCollection.DEM)
+                                                         }, data_collection = DataCollection.SENTINEL2_L1C)
         #CustomUrlParam.TRANSPARENT: True ・・・　deleted (non existent in current version)
         
         cloudresx, cloudresy = get_optimal_cloud_resolution(resx, resy)   
@@ -130,7 +130,7 @@ def extract_surface_water_area_per_frame(dam_id, dam_poly, dam_bbox, date, resx,
                                        resx=f'{cloudresx}m', resy=f'{cloudresy}m', image_format=MimeType.TIFF,
                                        time_difference=timedelta(hours=2),
                                        custom_url_params={CustomUrlParam.EVALSCRIPT: S2_CLOUD_BANDS_SCRIPT_V3}, 
-                                      data_collection = DataCollection.DEM)
+                                      data_collection = DataCollection.SENTINEL2_L1C)
 
     except (RuntimeError, DownloadFailedException):
         set_measurement_status(measurement, WaterDetectionStatus.SH_REQUEST_ERROR)

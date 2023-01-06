@@ -76,7 +76,7 @@ def get_S2_request(layer, dam_bbox, date, resx, resy, maxcc):
                       image_format=MimeType.TIFF,
                       maxcc=maxcc,
                       time_difference=timedelta(hours=2),
-                      custom_url_params={CustomUrlParam.EVALSCRIPT: S2_NDWI_SCRIPT_V3 if layer == 'NDWI' else S2_TRUECOLOR_SCRIPT_V3, CustomUrlParam.SHOWLOGO: False}, data_collection = DataCollection.DEM)
+                      custom_url_params={CustomUrlParam.EVALSCRIPT: S2_NDWI_SCRIPT_V3 if layer == 'NDWI' else S2_TRUECOLOR_SCRIPT_V3, CustomUrlParam.SHOWLOGO: False}, data_collection = DataCollection.SENTINEL2_L1C)
 
 def get_S2_wmsrequest(layer, dam_bbox, date, width, height, maxcc):
     return WmsRequest(data_folder=None,
